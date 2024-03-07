@@ -442,30 +442,27 @@
                 </div>
                 <div class="frame">
                     <div class="text-wrapper-8">JUMLAH YANG HARUS DIBAYAR</div>
-                    <div class="text-wrapper-9">Rp. 250.000</div>
+                    <div class="text-wrapper-9">Rp.<?php echo $peserta->magang_harga; ?></div>
                 </div>
             </div>
             <div class="list-pembayran">
                 <div class="div-4">
-                    <div class="text-wrapper-6">Biaya Pra Magang Juni</div>
-                    <div class="text-wrapper-7">Biaya Pra Magang Juni</div>
-                    <div class="text-wrapper-7">Biaya Pra Magang Juni</div>
+                    <div class="text-wrapper-6"><?php echo $peserta->magang_deskripsi; ?></div>
+                    <!-- <div class="text-wrapper-7">Biaya Pra Magang Juni</div>
+                    <div class="text-wrapper-7">Biaya Pra Magang Juni</div> -->
                 </div>
                 <div class="total-harga">
                     <div class="frame-2">
                         <div class="text-wrapper-6">1</div>
-                        <div class="text-wrapper-7">1</div>
-                        <div class="text-wrapper-7">1</div>
+                        
                     </div>
                     <div class="frame-2">
-                        <div class="text-wrapper-6">Rp. 250.000</div>
-                        <div class="text-wrapper-7">Rp. 250.000</div>
-                        <div class="text-wrapper-7">Rp. 250.000</div>
+                        <div class="text-wrapper-6">Rp .<?php echo $peserta->magang_harga; ?></div>
+
                     </div>
                     <div class="frame-2">
-                        <div class="text-wrapper-6">Rp. 250.000</div>
-                        <div class="text-wrapper-7">Rp. 250.000</div>
-                        <div class="text-wrapper-7">Rp. 250.000</div>
+                        <div class="text-wrapper-6">Rp. .<?php echo $peserta->magang_harga; ?></div>
+                     
                     </div>
                 </div>
             </div>

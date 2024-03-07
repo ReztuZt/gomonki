@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <a href="<?= base_url('peserta/ubah') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Peserta </a>
+        <a href="<?= base_url('peserta/ubahInvoice') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Add Payment </a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
