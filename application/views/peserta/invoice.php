@@ -4,400 +4,48 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>" />
+
 </head>
-<style>
-    .desktop {
-        background-color: #ffffff;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
+<?php
+// Fungsi untuk mengonversi nama bulan dalam bahasa Inggris menjadi bahasa Indonesia
+function bulan_indonesia($bulan)
+{
+    switch ($bulan) {
+        case 'January':
+            return 'Januari';
+        case 'February':
+            return 'Februari';
+        case 'March':
+            return 'Maret';
+        case 'April':
+            return 'April';
+        case 'May':
+            return 'Mei';
+        case 'June':
+            return 'Juni';
+        case 'July':
+            return 'Juli';
+        case 'August':
+            return 'Agustus';
+        case 'September':
+            return 'September';
+        case 'October':
+            return 'Oktober';
+        case 'November':
+            return 'November';
+        case 'December':
+            return 'Desember';
+        default:
+            return '';
     }
+}
 
-    .desktop .div {
-        background-color: #ffffff;
-        overflow: hidden;
-        width: 1440px;
-        height: 1024px;
-        position: relative;
-    }
-
-    .desktop .header {
-        display: inline-flex;
-        align-items: center;
-        gap: 637px;
-        padding: 9px 28px;
-        position: absolute;
-        top: -3px;
-        left: -37px;
-        background-color: #d9d9d9;
-        border-top-width: 23px;
-        border-top-style: solid;
-        border-right-style: none;
-        border-bottom-width: 23px;
-        border-bottom-style: solid;
-        border-left-style: none;
-        border-color: #16365c;
-    }
-
-    .desktop .left-header {
-        display: inline-flex;
-        align-items: center;
-        gap: 58px;
-        position: relative;
-        flex: 0 0 auto;
-
-        img {
-            width: 185px;
-            height: 107px;
-        }
-    }
-
-    .desktop .logo {
-        position: relative;
-        width: 185px;
-        height: 107px;
-        object-fit: cover;
-    }
-
-    .desktop .center-header {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .text-wrapper {
-        position: relative;
-        width: fit-content;
-        margin-top: -1px;
-        font-family: "Bahnschrift-SemiBold", Helvetica;
-        font-weight: 600;
-        color: #000000;
-        font-size: 20px;
-        letter-spacing: 0;
-        line-height: normal;
-        white-space: nowrap;
-    }
-
-    .desktop .contact {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 5px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .text-wrapper-2 {
-        position: relative;
-        width: fit-content;
-        margin-top: -1px;
-        font-family: "Bahnschrift-Regular", Helvetica;
-        font-weight: 400;
-        color: #000000;
-        font-size: 12px;
-        letter-spacing: 0;
-        line-height: normal;
-        white-space: nowrap;
-    }
-
-    .desktop .text-wrapper-3 {
-        position: relative;
-        width: fit-content;
-        font-family: "Bahnschrift-Regular", Helvetica;
-        font-weight: 400;
-        color: #000000;
-        font-size: 12px;
-        letter-spacing: 0;
-        line-height: normal;
-        white-space: nowrap;
-    }
-
-    .desktop .div-2 {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 6px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .text-wrapper-4 {
-        position: relative;
-        width: fit-content;
-        margin-top: -1px;
-        font-family: "Bahnschrift-SemiBold", Helvetica;
-        font-weight: 600;
-        color: #000000;
-        font-size: 24px;
-        letter-spacing: 0;
-        line-height: normal;
-    }
-
-    .desktop .no {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        padding: 0px 20px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .text-wrapper-5 {
-        position: relative;
-        width: fit-content;
-        margin-top: -1px;
-        font-family: "Bahnschrift-Regular", Helvetica;
-        font-weight: 400;
-        color: #000000;
-        font-size: 12px;
-        letter-spacing: 0;
-        line-height: normal;
-        text-decoration: underline;
-        white-space: nowrap;
-    }
-
-    .desktop .div-3 {
-        display: inline-flex;
-        align-items: flex-start;
-        gap: 7px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .pembayaran {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1018px;
-        position: absolute;
-        top: 210px;
-        left: 24px;
-    }
-
-    .desktop .div-4 {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .text-wrapper-6 {
-        position: relative;
-        width: fit-content;
-        margin-top: -1px;
-        font-family: "Bahnschrift-Regular", Helvetica;
-        font-weight: 400;
-        color: #000000;
-        font-size: 13px;
-        letter-spacing: 0;
-        line-height: normal;
-    }
-
-    .desktop .text-wrapper-7 {
-        position: relative;
-        width: fit-content;
-        font-family: "Bahnschrift-Regular", Helvetica;
-        font-weight: 400;
-        color: #000000;
-        font-size: 13px;
-        letter-spacing: 0;
-        line-height: normal;
-    }
-
-    .desktop .frame {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 16px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .text-wrapper-8 {
-        position: relative;
-        width: fit-content;
-        margin-top: -1px;
-        font-family: "Bahnschrift-SemiBold", Helvetica;
-        font-weight: 600;
-        color: #000000;
-        font-size: 13fpx;
-        letter-spacing: 0;
-        line-height: normal;
-        white-space: nowrap;
-    }
-
-    .desktop .text-wrapper-9 {
-        font-family: "Bahnschrift-SemiBold", Helvetica;
-        font-weight: 600;
-        color: #000000;
-        font-size: 36px;
-        white-space: nowrap;
-        position: relative;
-        width: fit-content;
-        letter-spacing: 0;
-        line-height: normal;
-    }
-
-    .desktop .list-pembayran {
-        display: inline-flex;
-        height: 67px;
-        align-items: flex-start;
-        gap: 952px;
-        position: absolute;
-        top: 412px;
-        left: 24px;
-    }
-
-    .desktop .total-harga {
-        display: inline-flex;
-        align-items: flex-start;
-        gap: 81px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .frame-2 {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .detail {
-        display: flex;
-        width: 1440px;
-        align-items: flex-start;
-        position: absolute;
-        top: 350px;
-        left: 0;
-    }
-
-    .desktop .deskripsi {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 197px;
-        padding: 10px 489px;
-        position: relative;
-        flex: 0 0 auto;
-        background-color: #d9d9d9;
-    }
-
-    .desktop .total {
-        display: inline-flex;
-        align-items: flex-start;
-        position: relative;
-        flex: 0 0 auto;
-        margin-right: -12px;
-    }
-
-    .desktop .div-wrapper {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 40px;
-        position: relative;
-        flex: 0 0 auto;
-        background-color: #d9d9d9;
-    }
-
-    .desktop .frame-wrapper {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 0px 50px;
-        position: relative;
-        flex: 0 0 auto;
-        background-color: #16365c;
-    }
-
-    .desktop .frame-3 {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        position: relative;
-        flex: 0 0 auto;
-    }
-
-    .desktop .frame-4 {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 22px;
-        padding: 10px;
-        position: relative;
-        flex: 0 0 auto;
-        background-color: #16365c;
-    }
-
-    .desktop .text-wrapper-10 {
-        position: relative;
-        width: fit-content;
-        margin-top: -1px;
-        font-family: "Bahnschrift-Regular", Helvetica;
-        font-weight: 400;
-        color: #ffffff;
-        font-size: 13px;
-        letter-spacing: 0;
-        line-height: normal;
-    }
-
-    .desktop .frame-5 {
-        display: inline-flex;
-        align-items: flex-start;
-        position: absolute;
-        top: 505px;
-        left: -14px;
-    }
-
-    .desktop .frame-6 {
-        display: flex;
-        flex-direction: column;
-        width: 1296px;
-        align-items: flex-end;
-        justify-content: center;
-        gap: 10px;
-        padding: 0px 50px;
-        position: relative;
-        background-color: #16365c;
-    }
-
-    .desktop .frame-7 {
-        display: flex;
-        flex-direction: column;
-        width: 158px;
-        align-items: center;
-        gap: 13px;
-        padding: 0px 39px;
-        position: relative;
-        background-color: #16365c;
-    }
-
-    .desktop .frame-8 {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        position: relative;
-        flex: 0 0 auto;
-        margin-left: -3px;
-        margin-right: -3px;
-    }
-</style>
+// Ambil nilai bulan dari inputan form atau dari database
+$bulan = $this->input->post('bulan');
+// Konversi nama bulan ke bahasa Indonesia
+$bulan_teks = bulan_indonesia(date("F", mktime(0, 0, 0, $bulan)));
+?>
 
 <body>
     <div class="desktop">
@@ -422,14 +70,16 @@
                             <div class="text-wrapper-5">INV-019</div>
                         </div>
                         <div class="div-3">
-                            <div class="text-wrapper-2">Tanggal :</div>
-                            <div class="text-wrapper-5"><?php echo $peserta->magang_ttl; ?></div>
+                            <div class="text-wrapper-2">Bulan :</div>
+                            <div class="text-wrapper-5"><?php echo $bulan_teks; ?></div>
                         </div>
+
                         <div class="div-3">
                             <div class="text-wrapper-2">Tanggal Pembayaran :</div>
                             <div class="text-wrapper-5"><?php echo $peserta->magang_ttl; ?></div>
                         </div>
                     </div>
+
                 </div>
             </header>
             <div class="pembayaran">
@@ -454,7 +104,7 @@
                 <div class="total-harga">
                     <div class="frame-2">
                         <div class="text-wrapper-6">1</div>
-                        
+
                     </div>
                     <div class="frame-2">
                         <div class="text-wrapper-6">Rp .<?php echo $peserta->magang_harga; ?></div>
@@ -462,7 +112,7 @@
                     </div>
                     <div class="frame-2">
                         <div class="text-wrapper-6">Rp. .<?php echo $peserta->magang_harga; ?></div>
-                     
+
                     </div>
                 </div>
             </div>

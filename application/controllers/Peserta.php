@@ -200,17 +200,60 @@ class Peserta extends CI_Controller
 
     public function invoice($id_magang)
     {
-
         // Load model untuk mengambil data peserta berdasarkan $id_magang
         $this->load->model('Peserta_model');
         $data['title'] = 'Detail';
         $data['peserta'] = $this->Peserta_model->get_invoice_by_id($id_magang);
 
+        // Ambil nilai bulan dari formulir jika tersedia
+        $bulan = $this->input->post('bulan');
+        echo "Nilai bulan yang dipilih: " . $bulan;
+        $data['bulan'] = $bulan;
+
+        // Panggil metode model untuk memperbarui bulan di database
+        $this->Peserta_model->update_bulan($id_magang, $bulan);
 
 
         $this->load->view('peserta/invoice', $data);
+    }
 
-        // Load view detail_peserta.php
 
+    public function pdf($id_magang)
+    {
+        $this->load->library('dompdf_gen');
+        $data['title'] = 'pdf';
+        $data['peserta_detail'] = $this->Peserta_model->get_peserta_pdf($id_magang);
+        // Tambahkan data lain yang diperlukan untuk halaman detail
+
+
+        $this->load->view('peserta/pesertapdf', $data); // Gantilah 'payment_detail' dengan nama view Anda
+        $paper_size = 'A4';
+        $orientation = 'landscape';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("invoice.pdf", array('Attachment' => 0));
+    }
+
+    function indonesian_date($bulan)
+    {
+        $nama_bulan = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember'
+        ];
+
+        return $nama_bulan[$bulan];
     }
 }
