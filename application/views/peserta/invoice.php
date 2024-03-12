@@ -5,7 +5,12 @@
             <div class="col-12">
                 <div class="callout callout-info">
                     <h5><i class="fas fa-info"></i> Note:</h5>
-                    This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
+                    Silakan lakukan pembayaran sesuai dengan instruksi di bawah. Mohon konfirmasi setelah melakukan pembayaran. Terima kasih.
+                    <div class="mt-3">
+                    <?php if ($this->session->flashdata('pesan')) : ?>
+                        <?= $this->session->flashdata('pesan') ?>
+                    <?php endif; ?>
+                    </div>
                 </div>
 
 
@@ -48,9 +53,9 @@
                         <div class="col-sm-4 invoice-col">
                             <b>Invoice <?php echo $peserta->id_magang; ?></strong></b><br>
                             <br>
-                            <b>Order ID:</b> 4F3S8J<br>
-                            <b>Payment Due:</b> 2/22/2014<br>
-                            <b>Account:</b> 968-34567
+                            <b>Bank:</b> BCA<br>
+                            <b>No. Rek:</b> 3920753638<br>
+                            <b>Atas Nama:</b> Yudhatama Fajar Nugroho
                         </div>
                         <!-- /.col -->
                     </div>
@@ -78,14 +83,17 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $ic->magang_nip; ?></td>
                                             <td><?= $ic->magang_nama; ?></td>
-                                            <td><?= $ic->invoice_status; ?></td>
+                                            <td><?= $ic->program_nama; ?></td>
                                             <td><?= $ic->program_harga; ?></td>
                                             <td>
-                                            <button data-toggle="modal" data-target="#detail" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button>
+                                                <button data-toggle="modal" data-target="#detail" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button>
                                             </td>
                                             <td>
-                                                <button data-toggle="modal" data-target="#edit" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i></button>
-                                                <a href="" class="btn btn-danger btn-sm m-1" onclick="return confirm('Apakah anda yakin menghapus data ini')"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="<?= base_url('invoice/edit_invoice/' . $ic->invoice_id) ?>" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i></a>
+                                                <!-- Contoh tautan untuk menghapus data dengan mengirimkan id_magang sebagai parameter -->
+
+                                                <a href="<?= base_url('invoice/delete/' . $ic->invoice_id . '?id_magang=' . $ic->id_magang) ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Apakah anda yakin menghapus data ini')"><i class="fas fa-trash-alt"></i></a>
+
                                             </td>
                                         </tr>
                                     </tbody>
@@ -95,7 +103,7 @@
                         <!-- /.col -->
                     </div>
                     <!-- this row will not appear when printing -->
-                    
+
                     <div class="row no-print">
                         <div class="col-12">
                             <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
