@@ -86,7 +86,7 @@
                                             <td><?= $ic->program_nama; ?></td>
                                             <td><?= $ic->program_harga; ?></td>
                                             <td>
-                                                <button data-toggle="modal" data-target="#detail" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button>
+                                            <button data-toggle="modal" data-target="#detail" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button>
                                             </td>
                                             <td>
                                                 <a href="<?= base_url('invoice/edit_invoice/' . $ic->invoice_id) ?>" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i></a>
@@ -107,12 +107,14 @@
                     <div class="row no-print">
                         <div class="col-12">
                             <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+
                             <!-- <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                                 Payment
                             </button> -->
                             <!-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                                 <i class="fas fa-download"></i> Generate PDF
                             </button> -->
+
                             <a href="<?= base_url('invoice/tambah_invoice/' . $id_magang) ?>" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Tambah Invoice</a>
 
                         </div>
@@ -124,3 +126,18 @@
     </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+<script>
+    function printAndDownloadPDF(url) {
+        // Membuka jendela baru untuk memuat URL PDF
+        var newWindow = window.open(url, '_blank');
+        // Menunggu jendela terbuka sebelum mencetak
+        newWindow.onload = function() {
+            // Mencetak dokumen
+            newWindow.print();
+            // Menutup jendela setelah pencetakan selesai
+            setTimeout(function() {
+                newWindow.close();
+            }, 100);
+        };
+    }
+</script>

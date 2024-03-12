@@ -66,4 +66,9 @@ class Peserta_model extends CI_Model
         $this->db->where('id_magang', $id_magang);
         return $this->db->get('tb_magang')->row();
     }
+    public function get_invoice($id_magang)
+    {
+        $this->db->where('id_magang', $id_magang);
+        return $this->db->get('tb_invoice')->row();
+    }
 }
