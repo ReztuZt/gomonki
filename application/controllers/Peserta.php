@@ -166,21 +166,6 @@ class Peserta extends CI_Controller
         redirect('peserta');
     }
 
-
-    // public function detail($id_magang)
-    // {
-    //     $data['title'] = 'detail';
-    //     $data['detail_magang'] = $this->Peserta_model->get_detail($id_magang);
-    //     // Tambahkan data lain yang diperlukan untuk halaman detail
-    //     $this->load->view('templates/header', $data);
-    //     $this->load->view('templates/sidebar', $data);
-    //     $this->load->view('peserta/peserta_detail', $data);
-    //     $this->load->view('templates/footer');
-    //     // Gantilah 'peserta_detail' dengan nama view Anda
-    // }
-
-
-    // Controller Peserta.php
     public function detail($id_magang)
     {
 
@@ -197,20 +182,36 @@ class Peserta extends CI_Controller
         // Load view detail_peserta.php
 
     }
+    // public function invoice($id_magang)
+    // {
 
-    public function invoice($id_magang)
-    {
-
-        // Load model untuk mengambil data peserta berdasarkan $id_magang
-        $this->load->model('Peserta_model');
-        $data['title'] = 'Detail';
-        $data['peserta'] = $this->Peserta_model->get_invoice_by_id($id_magang);
-
+    //     // Load model untuk mengambil data peserta berdasarkan $id_magang
+    //     // $this->load->model('Peserta_model');
+    //     $data['title'] = 'Invoice';
+    //     $data['peserta'] = $this->Peserta_model->get_peserta_by_id($id_magang);
 
 
-        $this->load->view('peserta/invoice', $data);
+    //     $this->load->view('templates/header', $data);
+    //     $this->load->view('templates/sidebar', $data);
+    //     $this->load->view('peserta/invoice', $data);
+    //     $this->load->view('templates/footer');
+    //     // Load view detail_peserta.php
 
-        // Load view detail_peserta.php
+    // }
 
-    }
+    // public function invoice($id_magang)
+    // {
+
+    //     // Load model untuk mengambil data peserta berdasarkan $id_magang
+    //     $this->load->model('Peserta_model');
+    //     $data['title'] = 'Detail';
+    //     $data['peserta'] = $this->Peserta_model->get_invoice_by_id($id_magang);
+
+
+
+    //     $this->load->view('peserta/invoice', $data);
+
+    //     // Load view detail_peserta.php
+
+    // }
 }

@@ -46,8 +46,9 @@
                             <td><?= $ssw->magang_kodepos ?></td>
                             <td><?= $ssw->magang_ktp ?></td>
                             <td><?= $ssw->magang_portofolio ?></td> -->
-                            <td><a href="<?= base_url('peserta/detail/' . $ssw->id_magang) ?>" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i></a></td>
+                            <td><a href="<?= base_url('peserta/invoice/' . $ssw->id_magang) ?>" class="btn btn-info btn-sm">Pembayaran</a></td>
                             <td><?= $ssw->status_nama ?></td>
+
                             <!-- <td><?= $ssw->course_nama ?></td>
                             <td><?= $ssw->kelaskategori ?></td> -->
                             <td>
@@ -83,12 +84,6 @@
                 });
             });
         </script>
-        <!-- Button trigger modal -->
-        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-    </button> -->
-
-        <!-- Modal -->
 
         <?php foreach ($peserta as $ssw) : ?>
             <div class="modal fade" id="edit<?= $ssw->id_magang ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

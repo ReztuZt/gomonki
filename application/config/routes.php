@@ -50,6 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'Auth/login';
+$route['peserta/invoice/(:any)'] = 'invoice/peserta_invoice/$1';
+$route['invoice/tambah_invoice/(:any)'] = 'invoice/tambah_invoice/$1';
+// $route['/gomonki/invoice/(:any)']= 'invoice/peserta_invoice/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 // application/config/routes.php
