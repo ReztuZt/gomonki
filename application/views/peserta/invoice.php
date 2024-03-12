@@ -7,9 +7,9 @@
                     <h5><i class="fas fa-info"></i> Note:</h5>
                     Silakan lakukan pembayaran sesuai dengan instruksi di bawah. Mohon konfirmasi setelah melakukan pembayaran. Terima kasih.
                     <div class="mt-3">
-                    <?php if ($this->session->flashdata('pesan')) : ?>
-                        <?= $this->session->flashdata('pesan') ?>
-                    <?php endif; ?>
+                        <?php if ($this->session->flashdata('pesan')) : ?>
+                            <?= $this->session->flashdata('pesan') ?>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -86,7 +86,19 @@
                                             <td><?= $ic->program_nama; ?></td>
                                             <td><?= $ic->program_harga; ?></td>
                                             <td>
-                                            <button data-toggle="modal" data-target="#detail" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button>
+                                                <div>
+                                                    <button onclick="printAndDownloadPDF('<?= base_url('invoice/view_invoice/' . $id_magang) ?>')" class="btn btn-info btn-sm mb-1">
+                                                        <i class="fas fa-print"></i> Print
+                                                    </button>
+                                                </div>
+                                                <!-- <div>
+                                                    <button>
+                                                        <a href="<?= base_url('invoice/view_invoice/' . $id_magang) ?>" class="btn btn-info btn-sm mb-1 no-border">
+                                                            <i class="fas fa-eye"></i> View
+                                                        </a>
+                                                    </button>
+                                                </div> -->
+
                                             </td>
                                             <td>
                                                 <a href="<?= base_url('invoice/edit_invoice/' . $ic->invoice_id) ?>" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i></a>
