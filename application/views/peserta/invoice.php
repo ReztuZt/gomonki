@@ -81,7 +81,7 @@
                                             <td><?= $ic->invoice_status; ?></td>
                                             <td><?= $ic->program_harga; ?></td>
                                             <td>
-                                            <button data-toggle="modal" data-target="#detail" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button>
+                                                <button data-toggle="modal" data-target="#detail" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button>
                                             </td>
                                             <td>
                                                 <button data-toggle="modal" data-target="#edit" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i></button>
@@ -95,16 +95,18 @@
                         <!-- /.col -->
                     </div>
                     <!-- this row will not appear when printing -->
-                    
+
                     <div class="row no-print">
                         <div class="col-12">
                             <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+
                             <!-- <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                                 Payment
                             </button> -->
                             <!-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                                 <i class="fas fa-download"></i> Generate PDF
                             </button> -->
+                            <a href="<?= base_url('invoice/view_invoice/' . $id_magang) ?>" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Print</a>
                             <a href="<?= base_url('invoice/tambah_invoice/' . $id_magang) ?>" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Tambah Invoice</a>
 
                         </div>

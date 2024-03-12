@@ -95,4 +95,14 @@ class Invoice extends CI_Controller
         $data = $this->Program_model->getDataProgram($program_nama);
         echo json_encode($data);
     }
+
+    public function view_invoice($id_magang)
+    {
+        // Mendapatkan data invoice dari model berdasarkan $id_magang
+        $data['invoice_data'] = $this->Invoice_model->get_invoice_data($id_magang);
+        $data['peserta'] = $this->Peserta_model->get_peserta_by_id($id_magang);
+        $data['invoice'] = $this->Peserta_model->get_invoice($id_magang);
+        // Load view 'invoice_view' dan passing data invoice
+        $this->load->view('peserta/invoice_view', $data);
+    }
 }

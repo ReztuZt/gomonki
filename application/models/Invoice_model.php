@@ -22,4 +22,11 @@ class Invoice_model extends CI_Model
     {
         return $this->db->get_where('tb_invoice', array('id_magang' => $id_magang))->result();
     }
+
+    public function get_invoice_data($id_magang)
+    {
+        // Query untuk mendapatkan data internship berdasarkan $id_magang
+        $query = $this->db->get_where('tb_magang', array('id_magang' => $id_magang));
+        return $query->row_array();
+    }
 }
