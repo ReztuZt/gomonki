@@ -81,7 +81,11 @@
                                             <td><?= $ic->invoice_status; ?></td>
                                             <td><?= $ic->program_harga; ?></td>
                                             <td>
-                                                <button data-toggle="modal" data-target="#detail" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button>
+                                                <!-- <button data-toggle="modal" data-target="#detail" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button> -->
+                                                <button onclick="printAndDownloadPDF('<?= base_url('invoice/view_invoice/' . $id_magang) ?>')" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF</button>
+                                                <button> <a href="<?= base_url('invoice/view_invoice/' . $id_magang) ?>" class="btn btn-info btn-sm"><i class="fas fa-download"></i> PDF2</a></button>
+
+
                                             </td>
                                             <td>
                                                 <button data-toggle="modal" data-target="#edit" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i></button>
@@ -106,7 +110,7 @@
                             <!-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                                 <i class="fas fa-download"></i> Generate PDF
                             </button> -->
-                            <a href="<?= base_url('invoice/view_invoice/' . $id_magang) ?>" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Print</a>
+
                             <a href="<?= base_url('invoice/tambah_invoice/' . $id_magang) ?>" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Tambah Invoice</a>
 
                         </div>
@@ -118,3 +122,18 @@
     </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+<script>
+    function printAndDownloadPDF(url) {
+        // Membuka jendela baru untuk memuat URL PDF
+        var newWindow = window.open(url, '_blank');
+        // Menunggu jendela terbuka sebelum mencetak
+        newWindow.onload = function() {
+            // Mencetak dokumen
+            newWindow.print();
+            // Menutup jendela setelah pencetakan selesai
+            setTimeout(function() {
+                newWindow.close();
+            }, 100);
+        };
+    }
+</script>

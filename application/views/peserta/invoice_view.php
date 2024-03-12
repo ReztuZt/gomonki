@@ -40,7 +40,7 @@
                     <div class="col invoice-details">
                         <h1 class="invoice-id">INVOICE 3-2-1</h1>
                         <div class="">Bulan : <?php echo $invoice->invoice_created; ?></div>
-                        <div class="date">Tenggat: <?php echo $peserta->tenggat_pembayaran; ?></div>
+                        <!-- <div class="date">Tenggat: <?php echo $peserta->tenggat_pembayaran; ?></div> -->
                     </div>
                 </div>
                 <table border="0" cellspacing="0" cellpadding="0">
