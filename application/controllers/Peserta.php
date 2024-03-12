@@ -8,6 +8,7 @@ class Peserta extends CI_Controller
         parent::__construct();
         cek_login();
         $this->load->model('Peserta_model');
+        $this->load->model('Riwayat_model');
         $this->load->library('form_validation');
     }
 
@@ -255,5 +256,55 @@ class Peserta extends CI_Controller
         ];
 
         return $nama_bulan[$bulan];
+    }
+    public function riwayat_invoice($id_magang)
+    {
+        $data['title'] = 'Riwayat Invoice';
+        $data['peserta'] = $this->Peserta_model->get_peserta_by_id($id_magang);
+        $data['riwayat_invoice'] = $this->Riwayat_model->get_invoice_history($id_magang);
+        $this->load->view('peserta/riwayat_invoice', $data);
+    }
+
+    public function updateinvoice($id_magang)
+    {
+        // Pastikan hanya metode POST yang diterima
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Load model untuk mengelola data peserta magang
+            $this->load->model('Peserta_model');
+
+            // Ambil data yang dikirim melalui formulir
+            $magang_payment = $this->input->post('magang_payment');
+            $magang_harga = $this->input->post('magang_harga');
+            $magang_deskripsi = $this->input->post('magang_deskripsi');
+            $magang_tgl = $this->input->post('magang_tgl');
+
+            // Panggil metode model untuk memperbarui data peserta magang
+            $this->Peserta_model->update_peserta($id_magang, $magang_payment, $magang_harga, $magang_deskripsi, $magang_tgl);
+
+            // Redirect kembali ke halaman detail peserta magang
+            redirect('peserta/detail/' . $id_magang);
+        } else {
+            // Jika metode selain POST diterima, redirect ke halaman utama atau tampilkan pesan kesalahan
+            redirect('/');
+        }
+    }
+
+
+
+    public function update2($id)
+    {
+        // Get data from the form
+        $data = array(
+            'tenggat_pembayaran' => $this->input->post('inputTenggat'),
+            'magang_harga' => $this->input->post('inputHarga'),
+            'magang_deskripsi' => $this->input->post('inputDeskripsi'),
+            // Add other fields as needed
+        );
+
+        // Update data in database
+        $this->Peserta_model->update_peserta2($id, $data);
+
+        // Redirect to detail page with the updated peserta ID
+        redirect('peserta/detail/' . $id);
     }
 }

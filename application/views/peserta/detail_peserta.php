@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <button data-toggle="modal" data-target="#edit<?= $peserta->id_magang ?>" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i> Edit Data</button>
+        <button data-toggle="modal" data-target="#detail<?= $peserta->id_magang ?>" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i> Edit Data</button>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -31,46 +31,59 @@
             </div>
             <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-print"></i> Cetak Invoice</button>
         </form>
+        <a href="<?= base_url('peserta/riwayat_invoice/' . $peserta->id_magang) ?>" class="btn btn-info btn-sm"><i class="fas fa-history"></i> Riwayat Invoice</a>
     </div>
+</div>
 
-    <!-- Modal untuk mengedit data peserta magang -->
-    <div class="modal fade" id="edit<?= $peserta->id_magang ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit Data Peserta Magang</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form untuk mengedit data peserta magang -->
-                    <form action="<?= base_url('peserta/update/' . $peserta->id_magang) ?>" method="post">
-                        <div class="form-group">
-                            <label for="magang_payment">Pembayaran:</label>
-                            <input type="text" class="form-control" id="magang_payment" name="magang_payment" value="<?= $peserta->magang_payment ?>">
+<!-- Modal untuk mengedit data peserta magang -->
+<div class="modal fade" id="detail<?= $peserta->id_magang ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); border: none; border-radius: 10px;">
+            <div class="modal-header" style="background-color: #007bff; color: #fff; border-radius: 10px 10px 0 0;">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fas fa-detail me-2"></i> Edit Data Peserta
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color: #fff;">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm" action="<?= base_url('peserta/update2/' . $peserta->id_magang) ?>" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputPayment">Status Pembayaran</label>
+                                <input type="text" id="inputPayment" name="inputPayment" class="form-control" value="<?= $peserta->magang_payment ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTenggat">Tenggat Pembayaran</label>
+                                <input type="date" id="inputTenggat" name="inputTenggat" class="form-control" value="<?= $peserta->tenggat_pembayaran ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputHarga">Harga</label>
+                                <input type="text" id="inputHarga" name="inputHarga" class="form-control" value="<?= $peserta->magang_harga ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDeskripsi">Deskripsi</label>
+                                <textarea id="inputDeskripsi" name="inputDeskripsi" class="form-control"><?= $peserta->magang_deskripsi ?></textarea>
+                            </div>
+                            <!-- Tambahkan input untuk data lainnya sesuai kebutuhan -->
                         </div>
-                        <div class="form-group">
-                            <label for="magang_harga">Harga:</label>
-                            <input type="text" class="form-control" id="magang_harga" name="magang_harga" value="<?= $peserta->magang_harga ?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="magang_deskripsi">Deskripsi:</label>
-                            <select class="form-control" id="magang_deskripsi" name="magang_deskripsi">
-                                <?php for ($i = 1; $i <= 12; $i++) : ?>
-                                    <?php $bulan = date("F", mktime(0, 0, 0, $i, 1)); ?>
-                                    <option value="Biaya Magang <?= $bulan . ' ' . date("Y") ?>" <?= $peserta->magang_deskripsi == "Biaya Magang $bulan " . date("Y") ? "selected" : "" ?>>Biaya Magang <?= $bulan . ' ' . date("Y") ?></option>
-                                <?php endfor; ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="magang_tgl">Tanggal:</label>
-                            <input type="date" class="form-control" id="magang_tgl" name="magang_tgl" value="<?= $peserta->tgl_pembuatan ?>">
-                        </div>
-                        <!-- Tambahkan form untuk mengedit data lainnya sesuai kebutuhan -->
-                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                    </form>
-                </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-danger" id="resetForm">Reset</button>
+                <button type="submit" form="editForm" class="btn btn-primary">Simpan</button>
             </div>
         </div>
+        <!-- /.modal-content -->
     </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+</div>

@@ -106,4 +106,29 @@ class Peserta_model extends CI_Model
 
         return $nama_bulan[$bulan];
     }
+
+
+    public function update_peserta($id_magang, $magang_payment, $magang_harga, $magang_deskripsi, $magang_tgl)
+    {
+        // Data yang akan diperbarui
+        $data = array(
+            'magang_payment' => $magang_payment,
+            'magang_harga' => $magang_harga,
+            'magang_deskripsi' => $magang_deskripsi,
+            'tgl_pembuatan' => $magang_tgl
+            // Tambahkan data lain yang ingin diperbarui sesuai kebutuhan
+        );
+
+        // Update data peserta magang berdasarkan ID
+        $this->db->where('id_magang', $id_magang);
+        $this->db->update('tb_magang', $data);
+    }
+
+
+    public function update_peserta2($id, $data) {
+        // Update data in the database where id_magang matches $id
+        $this->db->where('id_magang', $id);
+        $this->db->update('tb_magang', $data); // Change 'nama_tabel' to your actual table name
+    }
+    
 }

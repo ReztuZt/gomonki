@@ -13,7 +13,8 @@
 	"require": {
 		"php": ">=5.3.7",
 		"mpdf/mpdf": "^6.1",
-		"dompdf/dompdf": "^2.0.4"
+		"dompdf/dompdf": "^2.0.4",
+		"spipu/html2pdf": "^4.6"
 
 	},
 	"suggest": {
