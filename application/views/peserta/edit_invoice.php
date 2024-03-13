@@ -56,7 +56,7 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="program_nama">Nama</label>
+                                <label for="program_nama">Nama Program</label>
                                 <select class="form-control" id="program_nama" name="program_nama">
                                     <?php foreach ($programs as $program) : ?>
                                         <option value="<?php echo $program['program_nama']; ?>" <?php echo ($program['program_nama'] == $invoice->program_nama) ? 'selected' : ''; ?>><?php echo $program['program_nama']; ?></option>

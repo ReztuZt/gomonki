@@ -100,18 +100,27 @@
             <li class="nav-item">
               <hr class="sidebar-divider my-3">
             <li class="nav-item">
-              <p class="nav-label text-uppercase font-weight-bold text-muted">Activity</p>
+              <p class="nav-label text-uppercase font-weight-bold text-muted">Payment</p>
             </li>
-            </li>
-
             <!-- Pembayaran -->
             <li class="nav-item">
               <a href="<?= base_url('payment') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'pembayaran') echo 'active' ?>">
                 <i class="nav-icon fas fa-credit-card"></i>
                 <p>Pembayaran</p>
               </a>
+            <li class="nav-item">
+              <a href="<?= base_url('program') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'program') echo 'active' ?>">
+              <i class="nav-icon fas fa-dollar-sign"></i>
+                <p>Program</p>
+              </a>
             </li>
-
+            
+            <li class="nav-item">
+              <hr class="sidebar-divider my-3">
+            <li class="nav-item">
+              <p class="nav-label text-uppercase font-weight-bold text-muted">Activity</p>
+            </li>
+            </li>
             <!-- Profile -->
             <li class="nav-item">
               <a href="<?= base_url('user/profile/' . $this->session->id_admin); ?>" class="nav-link <?php if ($this->uri->segment(1) == 'user/profile') echo 'active' ?>">

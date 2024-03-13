@@ -14,4 +14,26 @@ class Program_model extends CI_Model
         return $this->db->get('tb_program')->row_array();
     }
     
+    public function get_data($table)
+    {
+        return $this->db->get($table);
+    }
+    public function tambah_program($data)
+    {
+        // Insert data ke dalam tabel 'tb_program'
+        $this->db->insert('tb_program', $data);
+    }
+
+    public function edit_program($program_id, $data)
+    {
+        $this->db->where('program_id', $program_id);
+        $this->db->update('tb_program', $data);
+    }
+    
+
+    public function delete($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
 }

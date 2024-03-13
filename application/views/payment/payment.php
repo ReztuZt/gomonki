@@ -6,7 +6,7 @@
 <div class="card">
     <div class="card-header">
         <a href="<?= base_url('payment/tambah') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Payment</a>
-        <a href="<?= base_url('payment/invoice') ?>" class="btn btn-primary"><i class="fas fa-file"></i> Invoice</a>
+        <!-- <a href="<?= base_url('payment/invoice') ?>" class="btn btn-primary"><i class="fas fa-file"></i> Invoice</a> -->
         <!-- <h3 class="card-title">Data Peserta Magang Manimonki</h3> -->
 
     </div>
@@ -24,7 +24,7 @@
                             <th>Catatan</th>
                             <th>Tanggal</th>
                             <th>File</th>
-                            <th>Cetak Invoice</th>
+                            <!-- <th>Cetak Invoice</th> -->
                             <th>Action</th>
 
                         </tr>
@@ -62,11 +62,11 @@
                                 <td><?= $ssw->payment_catatan ?></td>
                                 <td><?= $ssw->payment_date ?></td>
                                 <td><?= $ssw->payment_file ?></td>
-                                <td>
+                                <!-- <td>
                                     <a href="<?= base_url('payment/detail/' . $ssw->payment_id) ?>" class="btn btn-success btn-sm"><i class="fas fa-print"></i> Cetak Invoice</a>
-                                    <!-- <a href="<?= base_url('payment/pdf/' . $ssw->payment_id) ?>" class="btn btn-success btn-sm"><i class="fas fa-download"></i> Cetak Invoice pdf</a> -->
+                                    <a href="<?= base_url('payment/pdf/' . $ssw->payment_id) ?>" class="btn btn-success btn-sm"><i class="fas fa-download"></i> Cetak Invoice pdf</a>
                                     <a id="downloadLink" href="#" class="btn btn-success btn-sm"><i class="fas fa-print"></i> Cetak Invoice</a>
-                                </td>
+                                </td> -->
                                 <td>
                                     <!-- <a href="<?= base_url('payment/detail/' . $ssw->payment_id) ?>" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Detail</a> -->
                                     <!-- <button data-toggle="modal" data-target="#detail<?= $ssw->payment_id ?>" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Detail</button> -->
