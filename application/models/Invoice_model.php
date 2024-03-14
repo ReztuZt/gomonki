@@ -43,7 +43,7 @@ class Invoice_model extends CI_Model
         $this->db->where('id_magang', $id_magang);
         $this->db->update($table, $data);
     }
-    
+
     public function edit_invoice($invoice_id, $data)
     {
         $this->db->where('invoice_id', $invoice_id);
@@ -53,5 +53,17 @@ class Invoice_model extends CI_Model
     public function get_invoice_by_id($invoice_id)
     {
         return $this->db->get_where('tb_invoice', array('invoice_id' => $invoice_id))->row();
+    }
+    public function get_invoice_id($id_magang)
+    {
+        $this->db->select('invoice_id');
+        $this->db->where('id_magang', $id_magang);
+        $query = $this->db->get('tb_invoice');
+
+        if ($query->num_rows() > 0) {
+            return $query->row()->invoice_id;
+        } else {
+            return null;
+        }
     }
 }

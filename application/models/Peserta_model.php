@@ -61,6 +61,11 @@ class Peserta_model extends CI_Model
         $this->db->where('id_magang', $id_magang);
         return $this->db->get('tb_magang')->row(); // Mengembalikan satu baris data
     }
+    public function get_invoice_by_id2($invoice_id)
+    {
+        $this->db->where('invoice_id', $invoice_id);
+        return $this->db->get('tb_invoice')->row(); // Mengembalikan satu baris data
+    }
     public function get_invoice_by_id($id_magang)
     {
         $this->db->where('id_magang', $id_magang);
@@ -70,5 +75,10 @@ class Peserta_model extends CI_Model
     {
         $this->db->where('id_magang', $id_magang);
         return $this->db->get('tb_invoice')->row();
+    }
+    public function get_invoiceid($invoice_id)
+    {
+        $this->db->where('invoiceid', $invoice_id);
+        return $this->db->get('tb_invoice')->row(); // Mengembalikan satu baris data
     }
 }

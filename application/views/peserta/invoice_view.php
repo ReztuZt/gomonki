@@ -57,32 +57,40 @@
                         <tr>
                             <td class="no">1</td>
                             <td class="text-left">
-
                                 <a><?php echo $invoice->program_nama; ?> </a>
                             </td>
                             <td class="unit">1</td>
                             <td class="qty"> <?php echo $invoice->program_harga; ?></td>
                             <td class="total"> <?php echo $invoice->program_harga; ?></td>
                         </tr>
-
-
+                        <tr>
+                            <td class="no">2</td>
+                            <td class="text-left">
+                                <a><?php echo $invoice->program_nama1; ?></a>
+                            </td>
+                            <td class="unit">1</td>
+                            <td class="qty"> <?php echo $invoice->program_harga1; ?></td>
+                            <td class="total"> <?php echo $invoice->program_harga1; ?></td>
+                        </tr>
+                        <tr>
+                            <td class="no">3</td>
+                            <td class="text-left">
+                                <a><?php echo $invoice->program_nama2; ?></a>
+                            </td>
+                            <td class="unit">1</td>
+                            <td class="qty"> <?php echo $invoice->program_harga2; ?></td>
+                            <td class="total"> <?php echo $invoice->program_harga2; ?></td>
+                        </tr>
                     </tbody>
+
                     <tfoot>
                         <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2">‎</td>
-                            <td><a>‎</a></td>
-                        </tr>
-                        <tr>
-
-                        </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2">Jumlah Yang Harus Dibayar</td>
-                            <td> <?php echo $invoice->program_harga; ?></td>
+                            <td colspan="4">Jumlah Yang Harus Dibayar</td>
+                            <td> <?php echo $invoice->program_harga + $invoice->program_harga1 + $invoice->program_harga2; ?></td>
                         </tr>
                     </tfoot>
                 </table>
+
                 <p>‎ </p>
 
                 <p class="h2">Metode Pembayaran</p>

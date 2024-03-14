@@ -108,7 +108,10 @@
                                                     <button onclick="printAndDownloadPDF('<?= base_url('invoice/view_invoice/' . $id_magang) ?>')" class="btn btn-info btn-sm mb-1">
                                                         <i class="fas fa-print"></i> Print
                                                     </button>
+                                                    <!-- <a href="<?php echo base_url('invoice/view_invoice/' . $invoice_id); ?>" target="_blank">Print</a> -->
+
                                                 </div>
+
                                                 <!-- <div>
                         <button>
                             <a href="<?= base_url('invoice/view_invoice/' . $id_magang) ?>" class="btn btn-info btn-sm mb-1 no-border">

@@ -101,6 +101,7 @@ class Invoice extends CI_Controller
     {
         // Mendapatkan data invoice dari model berdasarkan $id_magang
         $data['invoice_data'] = $this->Invoice_model->get_invoice_data($id_magang);
+        
         $data['peserta'] = $this->Peserta_model->get_peserta_by_id($id_magang);
         $data['invoice'] = $this->Peserta_model->get_invoice($id_magang);
         // Load view 'invoice_view' dan passing data invoice
@@ -190,4 +191,16 @@ class Invoice extends CI_Controller
         // Redirect kembali ke halaman peserta/invoice/ dengan mengirimkan id_magang
         redirect('peserta/invoice/' . $id_magang);
     }
+    public function invoice_view($invoice_id)
+    {
+        // Mendapatkan data invoice dari model berdasarkan $invoice_id
+        $data['invoice_data'] = $this->Invoice_model->get_invoice_data_by_id($invoice_id);
+        // Mengirim invoice_id ke view
+        $data['invoice_id'] = $invoice_id;
+        // Load view 'invoice_view' dan passing data invoice
+        $this->load->view('peserta/invoice_view', $data);
+    }
+    
+    
+
 }
