@@ -1,0 +1,9 @@
+.program-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.program-list .badge {
+    margin-bottom: 5px; /* Jarak antar elemen daftar */
+    padding: 5px 10px; /* Padding untuk tampilan yang lebih baik */
+}

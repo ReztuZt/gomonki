@@ -53,21 +53,67 @@
                             <h3 class="card-title">Transaksi</h3>
                         </div>
                         <div class="card-body">
-                            <div class="form-group">
-                                <label for="program_nama">Nama</label>
-                                <select class="form-control" id="program_nama" name="program_nama">
-                                    <?php foreach ($programs as $program) : ?>
-                                        <option value="<?php echo $program['program_nama']; ?>"><?php echo $program['program_nama']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="program_nama">Nama Program</label>
+                                        <select class="form-control" id="program_nama" name="program_nama">
+                                            <?php foreach ($programs as $program) : ?>
+                                                <option value="<?php echo $program['program_nama']; ?>"><?php echo $program['program_nama']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="program_harga">Harga</label>
+                                        <input type="text" class="form-control" name="program_harga" id="program_harga">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="program_harga">Harga</label>
-                                <input type="text" class="form-control" name="program_harga" id="program_harga">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="program_nama1">Nama Program <span class="text-muted font-italic">(opsional)</span></label>
+                                        <select class="form-control" id="program_nama1" name="program_nama1">
+                                            <?php foreach ($programs as $program) : ?>
+                                                <option value="<?php echo $program['program_nama']; ?>"><?php echo $program['program_nama']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="program_harga1">Harga</label>
+                                        <input type="text" class="form-control" name="program_harga1" id="program_harga1">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="program_nama2">Nama Program <span class="text-muted font-italic">(opsional)</span></label>
+                                        <select class="form-control" id="program_nama2" name="program_nama2">
+                                            <?php foreach ($programs as $program) : ?>
+                                                <option value="<?php echo $program['program_nama']; ?>"><?php echo $program['program_nama']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="program_harga2">Harga</label>
+                                        <input type="text" class="form-control" name="program_harga2" id="program_harga2">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <!-- /.card-body -->
                     </div>
+
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Metode Pembayaran</h3>
@@ -114,6 +160,42 @@
                 success: function(response) {
                     var data = JSON.parse(response);
                     $('#program_harga').val(data.program_harga);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+
+        $('#program_nama1').change(function() {
+            var nama = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url("invoice/fungsi_get_data_program"); ?>',
+                data: {
+                    program_nama: nama
+                },
+                success: function(response) {
+                    var data = JSON.parse(response);
+                    $('#program_harga1').val(data.program_harga);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+
+        $('#program_nama2').change(function() {
+            var nama = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url("invoice/fungsi_get_data_program"); ?>',
+                data: {
+                    program_nama: nama
+                },
+                success: function(response) {
+                    var data = JSON.parse(response);
+                    $('#program_harga2').val(data.program_harga);
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);

@@ -36,4 +36,11 @@ class Program_model extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+    public function getProgramById($program_id)
+    {
+        // Ambil data program berdasarkan id_program
+        $this->db->where('program_id', $program_id);
+        return $this->db->get('tb_program')->row_array();
+    }
 }

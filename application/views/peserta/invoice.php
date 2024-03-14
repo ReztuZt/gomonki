@@ -70,7 +70,7 @@
                                         <th>No</th>
                                         <th>NIP</th>
                                         <th>Nama</th>
-                                        <th>Status</th>
+                                        <th>Program</th>
                                         <th>Total</th>
                                         <th>Cetak</th>
                                         <th>Action</th>
@@ -83,8 +83,26 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $ic->magang_nip; ?></td>
                                             <td><?= $ic->magang_nama; ?></td>
-                                            <td><?= $ic->program_nama; ?></td>
-                                            <td><?= $ic->program_harga; ?></td>
+                                            <td>
+                                                <div class="program-list">
+                                                    <?php if (!empty($ic->program_nama)) : ?>
+                                                        <div class="badge bg-primary"><?= $ic->program_nama; ?></div>
+                                                    <?php endif; ?>
+                                                    <?php if (!empty($ic->program_nama1)) : ?>
+                                                        <div class="badge bg-warning"><?= $ic->program_nama1; ?></div>
+                                                    <?php endif; ?>
+                                                    <?php if (!empty($ic->program_nama2)) : ?>
+                                                        <div class="badge bg-danger"><?= $ic->program_nama2; ?></div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                // Menghitung jumlah total harga
+                                                $total_harga = intval($ic->program_harga) + intval($ic->program_harga1) + intval($ic->program_harga2);
+                                                echo $total_harga;
+                                                ?>
+                                            </td>
                                             <td>
                                                 <div>
                                                     <button onclick="printAndDownloadPDF('<?= base_url('invoice/view_invoice/' . $id_magang) ?>')" class="btn btn-info btn-sm mb-1">
@@ -92,20 +110,19 @@
                                                     </button>
                                                 </div>
                                                 <!-- <div>
-                                                    <button>
-                                                        <a href="<?= base_url('invoice/view_invoice/' . $id_magang) ?>" class="btn btn-info btn-sm mb-1 no-border">
-                                                            <i class="fas fa-eye"></i> View
-                                                        </a>
-                                                    </button>
-                                                </div> -->
-
+                        <button>
+                            <a href="<?= base_url('invoice/view_invoice/' . $id_magang) ?>" class="btn btn-info btn-sm mb-1 no-border">
+                                <i class="fas fa-eye"></i> View
+                            </a>
+                        </button>
+                    </div> -->
                                             </td>
+
                                             <td>
                                                 <a href="<?= base_url('invoice/edit_invoice/' . $ic->invoice_id) ?>" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i></a>
                                                 <!-- Contoh tautan untuk menghapus data dengan mengirimkan id_magang sebagai parameter -->
 
                                                 <a href="<?= base_url('invoice/delete/' . $ic->invoice_id . '?id_magang=' . $ic->id_magang) ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Apakah anda yakin menghapus data ini')"><i class="fas fa-trash-alt"></i></a>
-
                                             </td>
                                         </tr>
                                     </tbody>

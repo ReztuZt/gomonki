@@ -17,9 +17,9 @@ class Invoice_model extends CI_Model
 
     public function insert_data($data, $table)
     {
+        // Memasukkan data ke dalam tabel
         $this->db->insert($table, $data);
     }
-
     public function get_invoices_by_id_magang($id_magang)
     {
         return $this->db->get_where('tb_invoice', array('id_magang' => $id_magang))->result();

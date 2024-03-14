@@ -68,7 +68,11 @@ class Invoice extends CI_Controller
                 'magang_telp'   => $this->input->post('magang_telp'),
                 'magang_email'  => $this->input->post('magang_email'),
                 'program_nama'  => $this->input->post('program_nama'),
+                'program_nama1'  => $this->input->post('program_nama1'),
+                'program_nama2'  => $this->input->post('program_nama2'),
                 'program_harga' => $this->input->post('program_harga'), // Sesuaikan dengan nama input yang digunakan di form HTML
+                'program_harga1' => $this->input->post('program_harga1'), // Sesuaikan dengan nama input yang digunakan di form HTML
+                'program_harga2' => $this->input->post('program_harga2'), // Sesuaikan dengan nama input yang digunakan di form HTML
             );
 
             // Panggil model untuk menyimpan data
@@ -161,16 +165,20 @@ class Invoice extends CI_Controller
             'magang_telp'   => $this->input->post('magang_telp'),
             'magang_email'  => $this->input->post('magang_email'),
             'program_nama'  => $this->input->post('program_nama'),
-            'program_harga' => $this->input->post('program_harga')
+            'program_nama1'  => $this->input->post('program_nama1'),
+            'program_nama2'  => $this->input->post('program_nama2'),
+            'program_harga' => $this->input->post('program_harga'),
+            'program_harga1' => $this->input->post('program_harga1'),
+            'program_harga2' => $this->input->post('program_harga2')
         );
-    
+
         // Simpan perubahan data invoice ke dalam database
         $this->Invoice_model->edit_invoice($invoice_id, $data);
-    
+
         // Ambil id_magang dari data invoice yang baru diedit
         $invoice = $this->Invoice_model->get_invoice_by_id($invoice_id);
         $id_magang = $invoice->id_magang;
-    
+
         // Set pesan sukses menggunakan session
         $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Sukses!</strong> Data berhasil diubah.
@@ -178,9 +186,8 @@ class Invoice extends CI_Controller
               <span aria-hidden="true">&times;</span>
             </button>
         </div>');
-    
+
         // Redirect kembali ke halaman peserta/invoice/ dengan mengirimkan id_magang
         redirect('peserta/invoice/' . $id_magang);
     }
-    
 }
