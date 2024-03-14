@@ -22,9 +22,9 @@
                             MANIMONKI
                             </a>
                         </h2>
-                        <div>Jl. Satrio Wibowo Selatan No. 39A Purwosari, Surakarta 57142</div>
-                        <div>Telepon: 0896-6274-4448</div>
-                        <div>Email: manimonki.solo@gmail.com</div>
+                        <div style="font-size: 15px;">Jl. Satrio Wibowo Selatan No. 39A Purwosari, Surakarta 57142</div>
+                        <div style="font-size: 15px;">Telepon: 0896-6274-4448</div>
+                        <div style="font-size: 15px;">Email: manimonki.solo@gmail.com</div>
                     </div>
                 </div>
             </header>
@@ -141,11 +141,11 @@
                 <div class="h5">Terima Kasih </div>
 
                 <div class="notices" style="text-align: right;">
-                    <div class="h6 gap: 5px;">Nusaibah:</div>
+                    <div class="h6 gap: 5px;" style="font-size: 15px;">Nusaibah:</div>
                     <p>‎</p>
                     <p>‎</p>
                     <p>‎</p>
-                    <div class="notice h6">Staff Bagian Permagangan</div>
+                    <div class="notice h6" style="font-size: 15px;">Staff Bagian Permagangan</div>
                 </div>
 
             </main>
