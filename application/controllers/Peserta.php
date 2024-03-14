@@ -18,6 +18,7 @@ class Peserta extends CI_Controller
         $data['tb_status'] = $this->Peserta_model->get_data('tb_status')->result();
         $data['tb_course'] = $this->Peserta_model->get_data('tb_course')->result();
         $data['tb_kelas'] = $this->Peserta_model->get_data('tb_kelas')->result();
+        $data['tb_invoice'] = $this->Peserta_model->get_data('tb_invoice')->result();
 
 
         $this->load->view('templates/header', $data);

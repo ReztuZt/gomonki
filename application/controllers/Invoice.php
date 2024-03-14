@@ -26,6 +26,13 @@ class Invoice extends CI_Controller
         $this->load->view('peserta/invoice', $data);
         $this->load->view('templates/footer');
     }
+    public function testing($invoice_id)
+    {
+
+        $data['invoice'] = $this->Peserta_model->get_invoice_by_id2($invoice_id);
+
+        $this->load->view('peserta/invoice_view', $data);
+    }
 
     public function tambah_invoice($id_magang)
     {
@@ -101,7 +108,7 @@ class Invoice extends CI_Controller
     {
         // Mendapatkan data invoice dari model berdasarkan $id_magang
         $data['invoice_data'] = $this->Invoice_model->get_invoice_data($id_magang);
-        
+
         $data['peserta'] = $this->Peserta_model->get_peserta_by_id($id_magang);
         $data['invoice'] = $this->Peserta_model->get_invoice($id_magang);
         // Load view 'invoice_view' dan passing data invoice
@@ -200,7 +207,14 @@ class Invoice extends CI_Controller
         // Load view 'invoice_view' dan passing data invoice
         $this->load->view('peserta/invoice_view', $data);
     }
-    
-    
 
+    public function test($invoice_id)
+    {
+        // Panggil method dari model untuk mengambil data invoice
+        $invoice_data = $this->InvoiceModel->get_invoice_dat($invoice_id);
+
+        // Lakukan sesuatu dengan data invoice, seperti melewatkan ke view
+        $data['invoice'] = $invoice_data;
+        $this->load->view('peserta/invoice_view', $data);
+    }
 }

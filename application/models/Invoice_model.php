@@ -66,4 +66,12 @@ class Invoice_model extends CI_Model
             return null;
         }
     }
+    public function get_invoice_dat($invoice_id)
+    {
+        // Ambil data dari tabel berdasarkan invoice_id
+        $query = $this->db->get_where('tb_invoice', array('invoice_id' => $invoice_id));
+
+        // Kembalikan hasil query dalam bentuk array
+        return $query->row_array();
+    }
 }

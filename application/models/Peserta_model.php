@@ -33,6 +33,12 @@ class Peserta_model extends CI_Model
         return $query->result();
     }
 
+    public function getInvoiceId()
+    {
+        $query = $this->db->get('tb_invoice');
+        return $query->result();
+    }
+
     public function insert_data($data, $table)
     {
         $this->db->insert($table, $data);
@@ -54,6 +60,12 @@ class Peserta_model extends CI_Model
     {
         $this->db->where('id_magang', $id_magang);
         return $this->db->get('tb_magang')->row();
+    }
+
+    public function getId($invoice_id)
+    {
+        $this->db->where('invoice_id', $invoice_id);
+        return $this->db->get('tb_invoice')->row();
     }
     // Model Peserta_model.php
     public function get_peserta_by_id($id_magang)

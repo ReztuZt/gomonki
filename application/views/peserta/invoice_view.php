@@ -31,15 +31,16 @@
             <main>
                 <div class="row contacts">
                     <div class="col invoice-to">
-                        <div class="text-gray-light">Kepada Yth.</div>
-                        <h2 class="to"><?php echo $peserta->magang_nama; ?></h2>
-                        <div class="address"><?php echo $peserta->magang_alamat; ?></div>
-                        <div class="address"><?php echo $peserta->magang_telp; ?></div>
-                        <div class="email">Email: <?php echo $peserta->magang_email; ?></a></div>
+                        <div class="text-gray-light" style="font-size: 19px;">Kepada Yth.</div>
+
+                        <h2 class="to"><?php echo $invoice->magang_nama; ?></h2>
+                        <div class="address" style="font-size: 16px;"><?php echo $invoice->magang_alamat; ?></div>
+                        <div class="address" style="font-size: 16px;"><?php echo $invoice->magang_telp; ?></div>
+                        <div class="email" style="font-size: 17px;">Email: <?php echo $invoice->magang_email; ?></a></div>
                     </div>
                     <div class="col invoice-details">
                         <h1 class="invoice-id">INVOICE 3-2-1</h1>
-                        <div class="">Bulan : <?php echo $invoice->invoice_created; ?></div>
+                        <div class="" style="font-size: 15px;">Bulan : <?php echo $invoice->invoice_created; ?></div>
                         <!-- <div class="date">Tenggat: <?php echo $peserta->tenggat_pembayaran; ?></div> -->
                     </div>
                 </div>
@@ -55,48 +56,84 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="no">1</td>
+                            <td class="" style="font-size: 19px;">1</td>
+
                             <td class="text-left">
                                 <a><?php echo $invoice->program_nama; ?> </a>
                             </td>
-                            <td class="unit">1</td>
-                            <td class="qty"> <?php echo $invoice->program_harga; ?></td>
-                            <td class="total"> <?php echo $invoice->program_harga; ?></td>
+                            <td class="unit" style="color: black;">1</td>
+                            <td class="qty"><?php echo $invoice->program_harga; ?></td>
+                            <td class="total" style="font-size: 19px; font-weight: bold; color: black;"><?php echo $invoice->program_harga; ?></td>
                         </tr>
                         <tr>
-                            <td class="no">2</td>
+                            <td class="" style="font-size: 19px;">2</td>
                             <td class="text-left">
                                 <a><?php echo $invoice->program_nama1; ?></a>
                             </td>
-                            <td class="unit">1</td>
-                            <td class="qty"> <?php echo $invoice->program_harga1; ?></td>
-                            <td class="total"> <?php echo $invoice->program_harga1; ?></td>
+                            <td class="unit" style="color: black;"><?php
+                                                                    // Memeriksa apakah kolom program harga ada dalam objek $invoice
+                                                                    if (isset($invoice->program_harga1)) {
+                                                                        echo 1; // Jika ada, tampilkan angka 1
+                                                                    } else {
+                                                                        echo ''; // Jika tidak ada, kosongkan
+                                                                    }
+                                                                    ?></td>
+                            <td class="qty"><?php echo $invoice->program_harga1; ?></td>
+                            <td class="total" style="font-size: 19px; font-weight: bold; color: black;"><?php echo $invoice->program_harga1; ?></td>
                         </tr>
                         <tr>
-                            <td class="no">3</td>
+                            <td class="" style="font-size: 19px;">3</td>
                             <td class="text-left">
                                 <a><?php echo $invoice->program_nama2; ?></a>
                             </td>
-                            <td class="unit">1</td>
-                            <td class="qty"> <?php echo $invoice->program_harga2; ?></td>
-                            <td class="total"> <?php echo $invoice->program_harga2; ?></td>
+                            <td class="unit" style="color: black;"><?php
+                                                                    // Memeriksa apakah $invoice->program_harga tidak NULL
+                                                                    if ($invoice->program_harga2 !== NULL) {
+                                                                        echo 1; // Jika tidak NULL, tampilkan angka 1
+                                                                    } else {
+                                                                        echo 0; // Jika NULL, tampilkan angka 0
+                                                                    }
+                                                                    ?></td>
+                            <td class="qty"><?php echo $invoice->program_harga2; ?></td>
+                            <td class="total" style="font-size: 19px; font-weight: bold; color: black;"><?php echo $invoice->program_harga2; ?></td>
                         </tr>
                     </tbody>
 
+
                     <tfoot>
                         <tr>
-                            <td colspan="4">Jumlah Yang Harus Dibayar</td>
-                            <td> <?php echo $invoice->program_harga + $invoice->program_harga1 + $invoice->program_harga2; ?></td>
+                            <td colspan="4" style="font-size: 19px; font-weight: bold;">Jumlah Yang Harus Dibayar</td>
+                            <td style="font-size: 19px;"><?php
+                                                            $total_harga = 0;
+
+                                                            // Cek apakah $invoice->program_harga ada dan konversi ke integer
+                                                            if (isset($invoice->program_harga)) {
+                                                                $total_harga += intval($invoice->program_harga);
+
+                                                                // Cek apakah $invoice->program_harga1 ada dan konversi ke integer
+                                                                if (isset($invoice->program_harga1)) {
+                                                                    $total_harga += intval($invoice->program_harga1);
+                                                                }
+
+                                                                // Cek apakah $invoice->program_harga2 ada dan konversi ke integer
+                                                                if (isset($invoice->program_harga2)) {
+                                                                    $total_harga += intval($invoice->program_harga2);
+                                                                }
+                                                            }
+
+                                                            echo $total_harga;
+                                                            ?>
+                            </td>
                         </tr>
                     </tfoot>
                 </table>
 
                 <p>‎ </p>
 
-                <p class="h2">Metode Pembayaran</p>
-                <p class="h6">Bank: BCA</p>
-                <p class="h6">No.Rek: 346579</p>
-                <p class="h6">Atas Nama: Yudhatama Fajar Nugroho</p>
+                <p class="h2" style="font-size: 19px;">Metode Pembayaran</p>
+                <p class="h6" style="font-size: 19px;">Bank: BCA</p>
+                <p class="h6" style="font-size: 19px;">No.Rek: 346579</p>
+                <p class="h6" style="font-size: 19px;">Atas Nama: Yudhatama Fajar Nugroho</p>
                 <p>‎ </p>
                 <p>‎ </p>
 
