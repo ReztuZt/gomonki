@@ -66,34 +66,48 @@
                             <td class="total" style="font-size: 19px; font-weight: bold; color: black;"><?php echo $invoice->program_harga; ?></td>
                         </tr>
                         <tr>
-                            <td class="" style="font-size: 19px;">2</td>
+                            <td class="" style="font-size: 19px;"><?php
+                                                                    if (!empty($invoice->program_nama1)) {
+                                                                        echo 2; // Jika ada datanya, tampilkan angka 1
+                                                                    } else {
+                                                                        echo ''; // Jika tidak ada datanya, biarkan hasilnya kosong
+                                                                    }
+                                                                    ?>
+                            </td>
                             <td class="text-left">
                                 <a><?php echo $invoice->program_nama1; ?></a>
                             </td>
                             <td class="unit" style="color: black;"><?php
-                                                                    // Memeriksa apakah kolom program harga ada dalam objek $invoice
-                                                                    if (isset($invoice->program_harga1)) {
-                                                                        echo 1; // Jika ada, tampilkan angka 1
+                                                                    if (!empty($invoice->program_nama1 )) {
+                                                                        echo 2; // Jika ada datanya, tampilkan angka 1
                                                                     } else {
-                                                                        echo ''; // Jika tidak ada, kosongkan
+                                                                        echo ''; // Jika tidak ada datanya, biarkan hasilnya kosong
                                                                     }
-                                                                    ?></td>
+                                                                    ?>
+                            </td>
                             <td class="qty"><?php echo $invoice->program_harga1; ?></td>
                             <td class="total" style="font-size: 19px; font-weight: bold; color: black;"><?php echo $invoice->program_harga1; ?></td>
                         </tr>
                         <tr>
-                            <td class="" style="font-size: 19px;">3</td>
+                            <td class="" style="font-size: 19px;"><?php
+                                                                    if (!empty($invoice->program_nama2)) {
+                                                                        echo 3; // Jika ada datanya, tampilkan angka 1
+                                                                    } else {
+                                                                        echo ''; // Jika tidak ada datanya, biarkan hasilnya kosong
+                                                                    }
+                                                                    ?>
+                            </td>
                             <td class="text-left">
                                 <a><?php echo $invoice->program_nama2; ?></a>
                             </td>
                             <td class="unit" style="color: black;"><?php
-                                                                    // Memeriksa apakah $invoice->program_harga tidak NULL
-                                                                    if ($invoice->program_harga2 !== NULL) {
-                                                                        echo 1; // Jika tidak NULL, tampilkan angka 1
+                                                                    if (!empty($invoice->program_nama2)) {
+                                                                        echo 1; // Jika ada datanya, tampilkan angka 1
                                                                     } else {
-                                                                        echo 0; // Jika NULL, tampilkan angka 0
+                                                                        echo ''; // Jika tidak ada datanya, biarkan hasilnya kosong
                                                                     }
-                                                                    ?></td>
+                                                                    ?>
+                            </td>
                             <td class="qty"><?php echo $invoice->program_harga2; ?></td>
                             <td class="total" style="font-size: 19px; font-weight: bold; color: black;"><?php echo $invoice->program_harga2; ?></td>
                         </tr>
