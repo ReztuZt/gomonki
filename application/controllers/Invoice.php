@@ -161,6 +161,23 @@ class Invoice extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function view_invoicee($invoice_id)
+    {
+        $data['title'] = 'Tambah Invoice';
+        $data['invoice'] = $this->Invoice_model->get_invoice_by_id($invoice_id);
+        $data['programs'] = $this->Program_model->getAllPrograms();
+        $data['invoice_id'] = $invoice_id; // Pastikan $invoice_id didefinisikan
+
+        if (!$data['invoice']) {
+            // Handle jika data invoice tidak ditemukan
+            // Contoh: redirect ke halaman error atau menampilkan pesan error
+        }
+
+
+        $this->load->view('peserta/invoice_view', $data); // Menyertakan data invoice ke view
+
+    }
+
 
     public function edit_aksi($invoice_id)
     {
